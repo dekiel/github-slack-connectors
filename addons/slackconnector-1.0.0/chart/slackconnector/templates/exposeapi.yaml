@@ -1,6 +1,6 @@
 
-apiVersion: gateway.kyma-project.io/v1alpha2
-kind: Api
+apiVersion: gateway.kyma-project.io/v1alpha1
+kind: APIRule
 metadata:
   name: {{ include "slack-connector-chart.release.name" . }}
   labels:
@@ -9,7 +9,13 @@ metadata:
     release: {{ include "slack-connector-chart.release.name" . }}
     heritage: {{ include "slack-connector-chart.release.service" . }}
 spec:
+    gateway: kyma-gateway.kyma-system.svc.cluster.local
     service:
       name: {{ include "slack-connector-chart.release.name" . }}
       port: {{ .Values.service.port }}
-    hostname: {{ include "slack-connector-chart.release.name" . }}
+      host: {{ include "slack-connector-chart.release.name" . }}
+    rules:
+      - path: /.*
+        methods: ["GET", "POST", "PUT", "DELETE"]
+        accessStrategies:
+          - handler: noop

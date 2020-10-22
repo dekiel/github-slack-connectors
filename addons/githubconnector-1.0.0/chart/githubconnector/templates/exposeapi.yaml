@@ -1,5 +1,5 @@
-apiVersion: gateway.kyma-project.io/v1alpha2
-kind: Api
+apiVersion: gateway.kyma-project.io/v1alpha1
+kind: APIRule
 metadata:
   name: {{ include "github-connector-chart.repository" . }}
   labels:
@@ -8,7 +8,13 @@ metadata:
     release: {{ include "github-connector-chart.release.name" . }}
     heritage: {{ include "github-connector-chart.release.service" . }}
 spec:
+    gateway: kyma-gateway.kyma-system.svc.cluster.local
     service:
       name: {{ include "github-connector-chart.repository" . }}
       port: {{ .Values.service.port }}
-    hostname: {{ include "github-connector-chart.repository" . }}
+      host: {{ include "github-connector-chart.repository" . }}
+    rules:
+      - path: /.*
+        methods: ["GET", "POST", "PUT"]
+        accessStrategies:
+          - handler: noop
