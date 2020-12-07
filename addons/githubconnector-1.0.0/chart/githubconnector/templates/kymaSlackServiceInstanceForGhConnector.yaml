@@ -4,5 +4,5 @@ metadata:
   name: kyma-slack
   namespace: gh-connector
 spec:
-  serviceClassExternalName: kyma-prow-dev-null-1dc76
+  serviceClassExternalName: kyma-prow-dev-null-f7441
   servicePlanExternalName: default
