@@ -1,0 +1,18 @@
+apiVersion: eventing.knative.dev/v1alpha1
+kind: Trigger
+metadata:
+  name: test-function-trigger
+  namespace: gh-connector
+spec:
+  broker: default
+  filter:
+    attributes:
+      eventtypeversion: v1
+      source: test-gh-connector-app
+      type: issuesevent.labeled
+  subscriber:
+    ref:
+      apiVersion: v1
+      kind: Service
+      name: test-function-python38
+      namespace: gh-connector

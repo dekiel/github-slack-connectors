@@ -1,7 +1,0 @@
-apiVersion: v1
-entries:
-  githubissuesentimentanalysis:
-    - name: githubissuesentimentanalysis
-      description: "GitHub Issue Sentiment Analysis"
-      version: 1.0.0
-      

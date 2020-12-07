@@ -1,0 +1,16 @@
+apiVersion: gateway.kyma-project.io/v1alpha1
+kind: APIRule
+metadata:
+  name: gh-webhook-endpoint
+  namespace: gh-connector
+spec:
+    gateway: kyma-gateway.kyma-system.svc.cluster.local
+    service:
+      name: gh-webhook-endpoint
+      port: 8081
+      host: gh-webhook-endpoint.ghcon116.neighbors.shoot.canary.k8s-hana.ondemand.com
+    rules:
+      - path: /webhook
+        methods: ["POST"]
+        accessStrategies:
+          - handler: noop

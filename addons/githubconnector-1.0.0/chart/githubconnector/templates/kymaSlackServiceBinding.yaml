@@ -1,0 +1,10 @@
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ServiceBinding
+metadata:
+  labels:
+    function: test-function-python38
+  name: kyma-slack-service-binding
+  namespace: gh-connector
+spec:
+  instanceRef:
+    name: kyma-slack

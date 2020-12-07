@@ -11,7 +11,7 @@ image: kymaflyingseals/github-connector:1.0.0
 service:
   port: 80
 
-githubToken: sampleToken
-kymaAddress: kyma.address.com
+githubToken: 48caaf036d6ddc94bdda0d698a65e6c434648c4d
+kymaAddress: console.ghcon.neighbors.shoot.canary.k8s-hana.ondemand.com
 githubEndpoint: 
-  - repos/example/test
+  - repos/kyma-test-infra-dev/test-infra

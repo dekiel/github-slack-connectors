@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gh-connector
+  namespace: gh-connector
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ghconnector
+  template:
+    metadata:
+      labels:
+        app: ghconnector
+    spec:
+      containers:
+      - name: main
+        image: eu.gcr.io/sap-kyma-neighbors-dev/ghwebhookgateway:1.0.2
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: 1
+        ports:
+        - containerPort: 8081
+        env:
+        - name: GITHUB_CONNECTOR_NAME
+          value: test-gh-connector-app
+        - name: EVENTING_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: ghconnector-config
+              key: unusedPort
+        - name: GITHUB_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: ghsecret
+              key: secret
+        - name: EVENTING_SERVICE
+          valueFrom:
+            configMapKeyRef:
+              name: ghconnector-config
+              key: kymaEventsService
+

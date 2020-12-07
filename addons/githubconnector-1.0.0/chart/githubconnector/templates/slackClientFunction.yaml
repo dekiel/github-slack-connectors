@@ -1,0 +1,16 @@
+apiVersion: serverless.kyma-project.io/v1alpha1
+kind: Function
+metadata:
+  name: test-function-python38
+  namespace: gh-connector
+  labels:
+    function: test-function-python38
+spec:
+  type: git
+  source: slack-client-function
+  reference: master
+  baseDir: /slackClientFunction
+  env:
+    - name: REQ_MB_LIMIT
+      value: "10"
+  runtime: python38
