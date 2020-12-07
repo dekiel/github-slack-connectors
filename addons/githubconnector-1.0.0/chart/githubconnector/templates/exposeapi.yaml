@@ -1,20 +1,16 @@
 apiVersion: gateway.kyma-project.io/v1alpha1
 kind: APIRule
 metadata:
-  name: {{ include "github-connector-chart.repository" . }}
-  labels:
-    app: {{ include "github-connector-chart.name" . }}
-    chart: {{ include "github-connector-chart.chart" . }}
-    release: {{ include "github-connector-chart.release.name" . }}
-    heritage: {{ include "github-connector-chart.release.service" . }}
+  name: gh-webhook-endpoint
+  namespace: gh-connector
 spec:
     gateway: kyma-gateway.kyma-system.svc.cluster.local
     service:
-      name: {{ include "github-connector-chart.repository" . }}
-      port: {{ .Values.service.port }}
-      host: {{ include "github-connector-chart.repository" . }}
+      name: gh-webhook-endpoint
+      port: 8081
+      host: gh-webhook-endpoint.ghcon116.neighbors.shoot.canary.k8s-hana.ondemand.com
     rules:
-      - path: /.*
-        methods: ["GET", "POST", "PUT"]
+      - path: /webhook
+        methods: ["POST"]
         accessStrategies:
           - handler: noop

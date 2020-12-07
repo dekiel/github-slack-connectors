@@ -1,6 +1,6 @@
 FROM golang:1.12.7-alpine3.10 as builder
 
-WORKDIR /go/src/github.com/kyma-incubator/github-slack-connectors/slack-connector
+WORKDIR /go/src/github.com/dekiel/github-slack-connectors/slack-connector
 
 COPY . .
 

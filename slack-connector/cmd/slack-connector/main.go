@@ -4,10 +4,10 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/kyma-incubator/github-slack-connectors/slack-connector/internal/events"
-	"github.com/kyma-incubator/github-slack-connectors/slack-connector/internal/handlers"
-	"github.com/kyma-incubator/github-slack-connectors/slack-connector/internal/registration"
-	"github.com/kyma-incubator/github-slack-connectors/slack-connector/internal/slack"
+	"github.com/dekiel/github-slack-connectors/slack-connector/internal/events"
+	"github.com/dekiel/github-slack-connectors/slack-connector/internal/handlers"
+	"github.com/dekiel/github-slack-connectors/slack-connector/internal/registration"
+	"github.com/dekiel/github-slack-connectors/slack-connector/internal/slack"
 	log "github.com/sirupsen/logrus"
 )
 

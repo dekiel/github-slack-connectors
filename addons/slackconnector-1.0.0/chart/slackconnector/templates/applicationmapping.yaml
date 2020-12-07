@@ -1,4 +1,5 @@
 apiVersion: applicationconnector.kyma-project.io/v1alpha1
 kind: ApplicationMapping
 metadata:
-  name: {{ include "slack-connector-chart.release.name" . }}-app
+  name: kyma-slack-app
+  namespace: gh-connector

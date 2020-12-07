@@ -1,0 +1,66 @@
+apiVersion: serverless.kyma-project.io/v1alpha1
+kind: Function
+metadata:
+  name: gh-webhook-endpoint
+  namespace: gh-connector
+spec:
+  env:
+    - name: REQ_MB_LIMIT
+      value: "10"
+  runtime: python38
+  source: |
+
+    secret = 'ieONyGp22j1X8n'
+    class Webhook(object):
+      """
+      Docs for Webhook class
+      """
+      def __init__(self, secret=None):
+        self.secret = secret
+
+      if secret:
+        # Only SHA1 is supported
+        header_signature = request.headers.get('X-Hub-Signature')
+        if header_signature is None:
+            abort(403)
+
+        sha_name, signature = header_signature.split('=')
+        if sha_name != 'sha1':
+            abort(501)
+
+        # HMAC requires the key to be bytes, but data is string
+        mac = hmac.new(str(secret), msg=request.data, digestmod='sha1')
+
+        # Python prior to 2.7.7 does not have hmac.compare_digest
+        if hexversion >= 0x020707F0:
+            if not hmac.compare_digest(str(mac.hexdigest()), str(signature)):
+                abort(403)
+        else:
+            # What compare_digest provides is protection against timing
+            # attacks; we can live without this protection for a web-based
+            # application
+            if not str(mac.hexdigest()) == str(signature):
+                abort(403)
+
+    # Implement ping
+    event = request.headers.get('X-GitHub-Event', 'ping')
+    if event == 'ping':
+        return dumps({'msg': 'pong'})
+
+    # Gather data
+    try:
+        payload = request.get_json()
+    except Exception:
+        logging.warning('Request parsing failed')
+        abort(400)
+
+      def on_label(data):
+        print("Got push with: {0}".format(data))
+
+    def main(event, data):
+      print(event)
+      print("__DATA__")
+      print(data)
+  deps: |
+    requests==2.25.0
+    github-webhook==1.0.4

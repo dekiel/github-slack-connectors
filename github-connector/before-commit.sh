@@ -14,13 +14,13 @@ echo -e "${NC}"
 ##
 # DEP ENSURE
 ##
-dep ensure -v --vendor-only
-ensureResult=$?
-if [ ${ensureResult} != 0 ]; then
-	echo -e "${RED}✗ dep ensure -v --vendor-only${NC}\n$ensureResult${NC}"
-	exit 1
-else echo -e "${GREEN}√ dep ensure -v --vendor-only${NC}"
-fi
+#dep ensure -v --vendor-only
+#ensureResult=$?
+#if [ ${ensureResult} != 0 ]; then
+#	echo -e "${RED}✗ dep ensure -v --vendor-only${NC}\n$ensureResult${NC}"
+#	exit 1
+#else echo -e "${GREEN}√ dep ensure -v --vendor-only${NC}"
+#fi
 
 ##
 # GO BUILD
@@ -43,13 +43,13 @@ fi
 ##
 # DEP STATUS
 ##
-echo "? dep status"
-depResult=$(dep status -v)
-if [ $? != 0 ]; then
-	echo -e "${RED}✗ dep status\n$depResult${NC}"
-	exit 1
-else echo -e "${GREEN}√ dep status${NC}"
-fi
+#echo "? dep status"
+#depResult=$(dep status -v)
+#if [ $? != 0 ]; then
+#	echo -e "${RED}✗ dep status\n$depResult${NC}"
+#	exit 1
+#else echo -e "${GREEN}√ dep status${NC}"
+#fi
 
 ##
 # GO TEST

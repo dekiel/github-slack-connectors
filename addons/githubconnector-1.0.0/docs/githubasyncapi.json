@@ -1,100 +1,61 @@
 {
-    "asyncapi": "1.0.0",
-    "info": {
-      "title": "github-events",
-      "version": "v1",
-      "description": "GitHub Events v1"
+  "asyncapi": "2.0.0",
+  "info": {
+    "title": "sap-kyma-github-events",
+    "version": "1.0.0",
+    "description": "GitHub Events v1.0.0"
+  },
+  "channels": {
+    "issuesevent.opened.v1": {
+      "subscribe": {
+        "message": {
+          "summary": "Example event",
+          "payload": {
+            "type": "object",
+            "properties": {
+              "myObject": {
+                "type": "object",
+                "required": [
+                  "id"
+                ],
+                "example": {
+                  "id": "4caad296-e0c5-491e-98ac-0ed118f9474e"
+                },
+                "properties": {
+                  "id": {
+                    "title": "Id",
+                    "description": "Resource identifier",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
-    "topics": {
-      "issuesevent.opened.v1": {
-        "subscribe": {
-          "summary": "New issue opened on github repository",
+    "issuesevent.labeled.v1": {
+      "subscribe": {
+        "message": {
+          "summary": "Example event",
           "payload": {
             "type": "object",
-            "required": [
-              "action"
-            ],
             "properties": {
-              "action": {
-                "type": "string",
-                "example": "edited",
-                "description": "The action that was performed.",
-                "title": "Action"
-              },
-              "issue": {
-                "$ref": "#/components/schemas/issue"
-              },
-              "changes": {
-                "type": "object"
-              },
-              "repository": {
-                "$ref": "#/components/schemas/repository"
-              },
-              "sender": {
-                "$ref": "#/components/schemas/user"
-              }
-            }
-          }
-        }
-      },
-      "pullrequestreviewevent.submitted.v1": {
-        "subscribe": {
-          "summary": "Triggered when a pull request review is submitted into a non-pending state.",
-          "payload": {
-            "type": "object",
-            "required": [
-              "action"
-            ],
-            "properties": {
-              "action": {
-                "type": "string",
-                "example": "submitted",
-                "description": "The action that was performed.",
-                "title": "Action"
-              },
-              "review": {
-                "$ref": "#/components/schemas/review"
-              },
-              "pull_request": {
-                "$ref": "#/components/schemas/pull_request"
-              },
-              "repository": {
-                "$ref": "#/components/schemas/repository"
-              },
-              "sender": {
-                "$ref": "#/components/schemas/user"
-              }
-            }
-          }
-        }
-      },
-      "pullrequestevent.opened.v1": {
-        "subscribe": {
-          "summary": "Triggered when a new pull request is opened",
-          "payload": {
-            "type": "object",
-            "required": [
-              "action"
-            ],
-            "properties": {
-              "action": {
-                "type": "string",
-                "example": "opened",
-                "description": "The action that was performed.",
-                "title": "Action"
-              },
-              "number": {
-                "type": "integer",
-                "example": 444500041
-              },
-              "pull_request": {
-                "$ref": "#/components/schemas/pull_request"
-              },
-              "repository": {
-                "$ref": "#/components/schemas/repository"
-              },
-              "sender": {
-                "$ref": "#/components/schemas/user"
+              "myObject": {
+                "type": "object",
+                "required": [
+                  "id"
+                ],
+                "example": {
+                  "id": "4caad296-e0c5-491e-98ac-0ed118f9474e"
+                },
+                "properties": {
+                  "id": {
+                    "title": "Id",
+                    "description": "Resource identifier",
+                    "type": "string"
+                  }
+                }
               }
             }
           }
@@ -1006,3 +967,4 @@
       }
     }
   }
+}

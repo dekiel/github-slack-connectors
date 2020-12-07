@@ -10,7 +10,7 @@ container:
 service:
   port: 80
 
-kymaAddress: adress
+kymaAddress: console.ghcon.neighbors.shoot.canary.k8s-hana.ondemand.com
 slackBotToken: token
 workspaceName: name
 slackSecret: secret

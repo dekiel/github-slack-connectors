@@ -1,0 +1,5 @@
+apiVersion: applicationconnector.kyma-project.io/v1alpha1
+kind: TokenRequest
+metadata:
+  name: kyma-slack-app
+  namespace: kyma-slack

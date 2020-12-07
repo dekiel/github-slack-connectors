@@ -1,0 +1,30 @@
+{
+  "provider": "kyma-slack",
+  "name": "kyma-prow-dev-null",
+  "description": "This is the long description of your service",
+  "shortDescription": "Short description",
+  "labels": {
+    "channel": "kyma-prow-dev-null"
+  },
+  "api": {
+    "targetUrl": "https://slack.com/api",
+    "requestParameters": {
+            "headers": {
+                "Authorization": ["Bearer xoxb-3683884814-1554619666736-CzzOtfEijWLCErl1D96pLszo"]
+            }
+    },
+    "specificationUrl": "https://raw.githubusercontent.com/slackapi/slack-api-specs/master/web-api/slack_web_openapi_v2.json"
+  },
+  "documentation": {
+    "displayName": "Slack connector documentation",
+    "description": "Documentation for Kyma dev team slack connector",
+    "type": ".md",
+    "docs": [
+        {
+        "title": "How to use",
+        "type": ".md",
+        "source": "https://raw.githubusercontent.com/kyma-test-infra-dev/test-infra/master/docs/prow/README.md"
+        }
+    ]
+  }
+}

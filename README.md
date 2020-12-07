@@ -2,7 +2,7 @@
 
 ---
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/kyma-incubator/github-slack-connectors)](https://goreportcard.com/report/github.com/kyma-incubator/github-slack-connectors)
+[![Go Report Card](https://goreportcard.com/badge/github.com/dekiel/github-slack-connectors)](https://goreportcard.com/report/github.com/dekiel/github-slack-connectors)
 
 ---
 
@@ -39,8 +39,8 @@ You can install the Connectors and start using them in just a few steps. Follow 
       - addons.kyma-project.io
     spec:
       repositories:
-        - url: github.com/kyma-incubator/github-slack-connectors//addons/index.yaml
-        - url: github.com/kyma-incubator/github-slack-connectors//addons/index-scenario.yaml
+        - url: github.com/dekiel/github-slack-connectors//addons/index.yaml
+        - url: github.com/dekiel/github-slack-connectors//addons/index-scenario.yaml
     EOF
     ```
 
@@ -64,7 +64,7 @@ Install the Connectors locally or on a cluster. For installation details, see th
 2. Clone the fork to your `$GOPATH` workspace. Use this command to create the folder structure and clone the repository under the correct location:
 
     ``` shell
-    git clone git@github.com:{GitHubUsername}/github-slack-connectors.git $GOPATH/src/github.com/kyma-incubator/github-slack-connectors
+    git clone git@github.com:{GitHubUsername}/github-slack-connectors.git $GOPATH/src/github.com/dekiel/github-slack-connectors
     ```
 
     Follow the steps described in the [`git-workflow.md`](https://github.com/kyma-project/community/blob/master/contributing/03-git-workflow.md) document to configure your fork.

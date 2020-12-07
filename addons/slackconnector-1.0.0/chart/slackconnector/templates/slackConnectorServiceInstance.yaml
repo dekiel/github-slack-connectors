@@ -1,0 +1,7 @@
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ServiceInstance
+metadata:
+  name: kyma-slack
+  namespace: kyma-slack
+spec:
+  serviceClassExternalName: kyma-prow-dev-null-a12ce

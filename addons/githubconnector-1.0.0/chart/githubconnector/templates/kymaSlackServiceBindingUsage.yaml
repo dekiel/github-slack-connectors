@@ -1,0 +1,17 @@
+apiVersion: servicecatalog.kyma-project.io/v1alpha1
+kind: ServiceBindingUsage
+metadata:
+  labels:
+    function: test-function-python38
+    serviceBinding: kyma-slack-service-binding
+  name: kyma-slack-service-binding-usage
+  namespace: gh-connector
+spec:
+  serviceBindingRef:
+    name: kyma-slack-service-binding
+  usedBy:
+    kind: serverless-function
+    name: test-function-python38
+  parameters:
+    envPrefix:
+      name: "KYMA_SLACK_"

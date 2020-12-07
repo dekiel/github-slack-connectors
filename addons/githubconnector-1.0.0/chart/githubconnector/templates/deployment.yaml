@@ -1,45 +1,43 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "github-connector-chart.repository" . }}
-  labels:
-    app: {{ include "github-connector-chart.name" . }}
-    chart: {{ include "github-connector-chart.chart" . }}
-    release: {{ include "github-connector-chart.release.name" . }}
-    heritage: {{ include "github-connector-chart.release.service" . }}
+  name: gh-connector
+  namespace: gh-connector
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
   selector:
     matchLabels:
-      app: {{ include "github-connector-chart.release.name" . }}
+      app: ghconnector
   template:
     metadata:
       labels:
-        app: {{ include "github-connector-chart.release.name" . }}
+        app: ghconnector
     spec:
       containers:
       - name: main
-        image: {{ .Values.image }}
+        image: eu.gcr.io/sap-kyma-neighbors-dev/ghwebhookgateway:1.0.2
         resources:
           limits:
-            memory: {{ .Values.container.limits.memory }}
-            cpu: {{ .Values.container.limits.cpu }}
+            memory: 512Mi
+            cpu: 1
         ports:
-        - containerPort: {{ .Values.container.containerPort }}
-        args:
-        - "./main"
-        {{ range .Values.githubEndpoint -}}
-        - {{ . | printf "https://api.github.com/%s/hooks" | quote }}
-        {{ end -}}
+        - containerPort: 8081
         env:
-        - name: PORT
-          value: {{ quote .Values.container.containerPort }}
         - name: GITHUB_CONNECTOR_NAME
-          value: {{ include "github-connector-chart.repository" . }}
-        - name: GITHUB_TOKEN
-          value: {{ .Values.githubToken }}
+          value: test-gh-connector-app
+        - name: EVENTING_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: ghconnector-config
+              key: unusedPort
         - name: GITHUB_SECRET
-          value: {{ randAlphaNum 14 }}
-        - name: KYMA_ADDRESS
-          value: {{ include "github-connector-chart.repository" . }}.{{ .Values.kymaAddress }}
+          valueFrom:
+            secretKeyRef:
+              name: ghsecret
+              key: secret
+        - name: EVENTING_SERVICE
+          valueFrom:
+            configMapKeyRef:
+              name: ghconnector-config
+              key: kymaEventsService
 
