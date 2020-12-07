@@ -10,7 +10,7 @@
     "targetUrl": "https://slack.com/api",
     "requestParameters": {
             "headers": {
-                "Authorization": ["Bearer xoxb-3683884814-1554619666736-CzzOtfEijWLCErl1D96pLszo"]
+                "Authorization": ["Bearer slack_bot_token"]
             }
     },
     "specificationUrl": "https://raw.githubusercontent.com/slackapi/slack-api-specs/master/web-api/slack_web_openapi_v2.json"
