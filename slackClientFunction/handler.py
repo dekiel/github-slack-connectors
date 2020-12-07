@@ -33,11 +33,10 @@ def main(event, context):
 														]
 												},
 												{
-													"type": "section",
-													"text":
-														{
-															"type": "mrkdwn",
-															"text": "`{}` labeled issue `{}` as `{}`.\n{} <{}|You can find it here>".format(sender, title, label, assignee, issue_url)
+													"type": "header",
+													"text": {
+														"type": "plain_text",
+														"text": "SAP Github {}".format(label)
 														}
 												},
 												{
@@ -45,9 +44,9 @@ def main(event, context):
 													"text":
 														{
 															"type": "mrkdwn",
-															"text": "{}. <{}|You can find it here>".format(assignee, issue_url)
+															"text": "`{}` labeled issue `{}` as `{}`.\n{} <{}|You can find it here>".format(sender, title, label, assignee, issue_url)
 														}
-													},
+												},
 												])
 			assert response["ok"]
 		except SlackApiError as e:
