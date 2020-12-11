@@ -1,5 +1,5 @@
 apiVersion: applicationconnector.kyma-project.io/v1alpha1
 kind: ApplicationMapping
 metadata:
-  name: test-gh-connector-app
+  name: slack-connector
   namespace: gh-connector

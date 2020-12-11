@@ -1,7 +1,10 @@
 apiVersion: serverless.kyma-project.io/v1alpha1
 kind: GitRepository
 metadata:
-  name: slack-client-function
+  name: gc-slack-client-repo
   namespace: gh-connector
+  labels:
+    app: github-connector
+    function: gh-connector-slack-client
 spec:
   url: "https://github.com/dekiel/github-slack-connectors.git"

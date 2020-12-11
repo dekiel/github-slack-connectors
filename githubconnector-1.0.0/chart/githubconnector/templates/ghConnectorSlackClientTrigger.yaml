@@ -1,18 +1,22 @@
 apiVersion: eventing.knative.dev/v1alpha1
 kind: Trigger
 metadata:
-  name: test-function-trigger
+  name: slack-client-issue-labeled
   namespace: gh-connector
+  labels:
+    app: github-connector
+    function: gh-connector-slack-client
+    event: issueevent
 spec:
   broker: default
   filter:
     attributes:
       eventtypeversion: v1
-      source: test-gh-connector-app
+      source: github-connector
       type: issuesevent.labeled
   subscriber:
     ref:
       apiVersion: v1
       kind: Service
-      name: test-function-python38
+      name: gh-connector-slack-client
       namespace: gh-connector

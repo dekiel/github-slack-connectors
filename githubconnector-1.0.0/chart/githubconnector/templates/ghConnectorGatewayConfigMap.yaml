@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gc-webhook-gateway-config
+  namespace: gh-connector
+  labels:
+    app: github-connector
+    type: webhook-gateway
+data:
+  kymaEventsService: "http://github-connector-event-service.kyma-integration:8081/github-connector/events"
+  listenPort: "8081"

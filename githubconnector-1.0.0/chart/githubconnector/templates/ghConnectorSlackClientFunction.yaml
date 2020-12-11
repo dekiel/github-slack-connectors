@@ -1,13 +1,14 @@
 apiVersion: serverless.kyma-project.io/v1alpha1
 kind: Function
 metadata:
-  name: test-function-python38
+  name: gc-slack-client
   namespace: gh-connector
   labels:
-    function: test-function-python38
+    app: github-connector
+    function: gh-connector-slack-client
 spec:
   type: git
-  source: slack-client-function
+  source: gc-slack-client-repo
   reference: master
   baseDir: /slackClientFunction
   env:

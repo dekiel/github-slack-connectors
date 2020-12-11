@@ -1,5 +1,7 @@
 apiVersion: applicationconnector.kyma-project.io/v1alpha1
 kind: TokenRequest
 metadata:
-  name: test-gh-connector-app
+  name: github-connector
   namespace: gh-connector
+  labels:
+    app: github-connector

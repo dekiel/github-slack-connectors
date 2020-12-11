@@ -1,29 +1,32 @@
 {
-  "provider": "kyma-slack",
-  "name": "kyma-prow-dev-null",
+  "provider": "Slack Connector",
+  "name": "Kyma Slack connector",
   "description": "This is the long description of your service",
   "shortDescription": "Short description",
   "labels": {
-    "channel": "kyma-prow-dev-null"
+    "app": "slack-connector",
   },
   "api": {
     "targetUrl": "https://slack.com/api",
     "requestParameters": {
             "headers": {
-                "Authorization": ["Bearer slack-app-token"]
+                "Authorization": "Bearer slack-app-token"
             }
     },
     "specificationUrl": "https://raw.githubusercontent.com/slackapi/slack-api-specs/master/web-api/slack_web_openapi_v2.json"
   },
   "documentation": {
     "displayName": "Slack connector documentation",
-    "description": "Documentation for Kyma dev team slack connector",
-    "type": ".md",
+    "description": "Documentation for Kyma team slack connector",
     "docs": [
         {
-        "title": "How to use",
-        "type": ".md",
-        "source": "https://raw.githubusercontent.com/kyma-test-infra-dev/test-infra/master/docs/prow/README.md"
+        "title": "Slack API documentation",
+        "source": "https://api.slack.com"
+        },
+        {
+        "title":"Kyma Slack Connector documentation",
+        "source":"",
+        "type":".md"
         }
     ]
   }

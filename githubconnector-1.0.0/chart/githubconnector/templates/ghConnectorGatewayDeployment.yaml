@@ -1,34 +1,39 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gh-connector
+  name: gc-webhook-gateway
   namespace: gh-connector
+  labels:
+    app: github-connector
+    type: webhook-gateway
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ghconnector
+      app: github-connector
+      type: webhook-gateway
   template:
     metadata:
       labels:
-        app: ghconnector
+        app: github-connector
+        type: webhook-gateway
     spec:
       containers:
-      - name: main
+      - name: webhookgateway
         image: eu.gcr.io/sap-kyma-neighbors-dev/ghwebhookgateway:1.0.2
         resources:
           limits:
-            memory: 512Mi
-            cpu: 1
+            memory: 256Mi
+            cpu: 500m
         ports:
         - containerPort: 8081
         env:
         - name: GITHUB_CONNECTOR_NAME
-          value: test-gh-connector-app
-        - name: EVENTING_PORT
+          value: sap-github-webhook
+        - name: LISTEN_PORT
           valueFrom:
             configMapKeyRef:
-              name: ghconnector-config
+              name: gc-webhook-gateway-config
               key: unusedPort
         - name: GITHUB_SECRET
           valueFrom:
@@ -38,6 +43,6 @@ spec:
         - name: EVENTING_SERVICE
           valueFrom:
             configMapKeyRef:
-              name: ghconnector-config
+              name: gc-webhook-gateway-config
               key: kymaEventsService
 
