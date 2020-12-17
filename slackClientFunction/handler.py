@@ -15,6 +15,7 @@ def main(event, context):
 		assignee = "Issue {} in repository {} is not assigned.".format(number, repo)
 	sender = event["data"]["sender"]["login"]
 	issue_url = event["data"]["issue"]["html_url"]
+	# Run only for internal-incident and customer-incident labels
 	if (label == "internal-incident") or (label == "customer-incident"):
 		try:
 			response = client.chat_postMessage(channel='kyma-prow-dev-null',
