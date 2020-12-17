@@ -1,8 +1,7 @@
 apiVersion: servicecatalog.k8s.io/v1beta1
 kind: ServiceInstance
 metadata:
-  name: my-events-service-instance-name
+  name: gc-webhook
   namespace: gh-connector
 spec:
-  # $(kubectl -n $NAMESPACE get serviceclass SERVICE_ID -o jsonpath='{.spec.externalName}')
   serviceClassExternalName: example-name-44851

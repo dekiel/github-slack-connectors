@@ -1,13 +1,15 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: gh-webhook-endpoint
+  name: gc-webhook-gateway
   namespace: gh-connector
   labels:
-    app: gh-connector
+    app: github-connector
+    type: webhook-gateway
 spec:
   selector:
-    app: ghconnector
+    app: github-connector
+    type: webhook-gateway
   type: ClusterIP
   ports:
     - name: http

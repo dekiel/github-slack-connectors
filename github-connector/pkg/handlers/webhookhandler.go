@@ -9,11 +9,12 @@ import (
 	"github.com/google/go-github/github"
 	log "github.com/sirupsen/logrus"
 	"net/http"
+	"os"
 )
 
 //Sender is an interface used to allow mocking sending events to Kyma's event bus
 type Sender interface {
-	SendToKyma(eventType, eventTypeVersion, eventID string, data json.RawMessage) apperrors.AppError
+	SendToKyma(eventType, sourceID, eventTypeVersion, eventID string, data json.RawMessage) apperrors.AppError
 }
 
 //WebHookHandler is a struct used to allow mocking the github library methods
@@ -52,13 +53,13 @@ func (wh *WebHookHandler) HandleWebhook(w http.ResponseWriter, r *http.Request) 
 
 	var eventType string
 	switch event := event.(type) {
+	// Supported github events
 	case *github.IssuesEvent:
 		eventType = fmt.Sprintf("issuesevent.%s", *event.Action)
 	}
-	//eventType := reflect.Indirect(reflect.ValueOf(event)).Type().Name()
-	//sourceID := os.Getenv("GITHUB_CONNECTOR_NAME")
+	sourceID := os.Getenv("GITHUB_CONNECTOR_NAME")
 	log.Info(fmt.Sprintf("Event type '%s' received.", eventType))
-	apperr = wh.sender.SendToKyma(eventType, "v1", "", payload)
+	apperr = wh.sender.SendToKyma(eventType, sourceID, "v1", "", payload)
 
 	if apperr != nil {
 		log.Info(apperrors.Internal("While handling the event: %s", apperr.Error()))

@@ -1,5 +1,7 @@
 apiVersion: applicationconnector.kyma-project.io/v1alpha1
 kind: ApplicationMapping
 metadata:
-  name: kyma-slack-app
+  name: github-connector
   namespace: gh-connector
+  labels:
+    app: github-connector

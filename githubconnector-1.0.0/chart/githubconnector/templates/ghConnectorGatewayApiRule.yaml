@@ -1,12 +1,14 @@
 apiVersion: gateway.kyma-project.io/v1alpha1
 kind: APIRule
 metadata:
-  name: gh-webhook-endpoint
+  name: gc-webhook-gateway
   namespace: gh-connector
+  labels:
+    app: github-connector
 spec:
     gateway: kyma-gateway.kyma-system.svc.cluster.local
     service:
-      name: gh-webhook-endpoint
+      name: gc-webhook-gateway
       port: 8081
       host: gh-webhook-endpoint.ghcon116.neighbors.shoot.canary.k8s-hana.ondemand.com
     rules:

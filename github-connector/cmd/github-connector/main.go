@@ -15,8 +15,8 @@ import (
 type Config struct {
 	GitHubConnectorName string `envconfig:"GITHUB_CONNECTOR_NAME"`
 	GitHubSecret        string `envconfig:"GITHUB_SECRET"`
-	KymaEventsService   string `envconfig:"EVENTING_SERVICE"` //http://test-gh-connector-app-event-service.kyma-integration:8081/test-gh-connector-app/v1/events
-	Port                string `envconfig:"EVENTING_PORT"`
+	KymaEventsService   string `envconfig:"EVENTING_SERVICE"` //http://test-gh-connector-app-event-service.kyma-integration:8081/test-gh-connector-app/events
+	Port                string `envconfig:"LISTEN_PORT"`
 }
 
 func main() {
@@ -25,7 +25,6 @@ func main() {
 	if err != nil {
 		log.Fatal("Env error: ", err.Error())
 	}
-	log.Infof("Github secret: %s", conf.GitHubSecret)
 	log.Infof("Eventing service URL: %s", conf.KymaEventsService)
 	log.Infof("Port: %s", conf.Port)
 

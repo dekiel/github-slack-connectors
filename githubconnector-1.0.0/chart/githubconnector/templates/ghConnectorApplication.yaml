@@ -1,9 +1,9 @@
 apiVersion: applicationconnector.kyma-project.io/v1alpha1
 kind: Application
 metadata:
-  name: test-gh-connector-app
+  name: github-connector
   namespace: gh-connector
   labels:
-    app: test-gh-connector-app
+    app: github-connector
 spec:
-  description: Testing Github connector for Kyma dev team.
+  description: Github connector for Kyma dev team.

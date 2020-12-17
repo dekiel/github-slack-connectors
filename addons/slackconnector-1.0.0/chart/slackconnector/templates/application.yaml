@@ -1,7 +1,0 @@
-apiVersion: applicationconnector.kyma-project.io/v1alpha1
-kind: Application
-metadata:
-  name: kyma-slack-app
-  namespace: kyma-slack
-spec:
-  description: "Kyma slack connector"
