@@ -4,7 +4,7 @@ from slack_sdk.errors import SlackApiError
 
 
 def main(event, context):
-	client = WebClient(base_url=os.environ['KYMA_SLACK_KYMA_SLACK_CONNECTOR_E39A0FC6_C29C_4156_A205_DE7B24D4D480_GATEWAY_URL'])
+	client = WebClient(base_url=os.environ['KYMA_SLACK_KYMA_SLACK_CONNECTOR_277A5551_00A9_49DB_9B9A_FBFD891BD070_GATEWAY_URL'])
 	label = event["data"]["label"]["name"]
 	title = event["data"]["issue"]["title"]
 	number = event["data"]["issue"]["number"]
