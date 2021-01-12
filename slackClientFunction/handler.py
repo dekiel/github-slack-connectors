@@ -51,7 +51,8 @@ def main(event, context):
 														}
 												},
 												])
-			assert response["ok"]
+			#assert response["ok"]
+			print(response)
 		except SlackApiError as e:
 			# You will get a SlackApiError if "ok" is False
 			assert e.response["ok"] is False
