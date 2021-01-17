@@ -1,10 +1,7 @@
 apiVersion: servicecatalog.k8s.io/v1beta1
-kind: ServiceBinding
+kind: ServiceInstance
 metadata:
-  labels:
-    app: slack-connector
   name: mp-kyma-slack-connector
   namespace: gh-connector
 spec:
-  instanceRef:
-    name: mp-kyma-slack-connector
+  serviceClassExternalName: mp-kyma-slack-connector

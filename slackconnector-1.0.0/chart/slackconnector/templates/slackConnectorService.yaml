@@ -1,8 +1,0 @@
-apiVersion: servicecatalog.k8s.io/v1beta1
-kind: ServiceInstance
-metadata:
-  name: slack-connector
-  namespace: gh-connector
-spec:
-  serviceClassExternalName: kyma-prow-dev-null-f7441
-  servicePlanExternalName: default

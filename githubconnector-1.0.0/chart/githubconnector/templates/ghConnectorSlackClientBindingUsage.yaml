@@ -4,12 +4,12 @@ metadata:
   labels:
     function: gc-slack-client
     app: slack-connector
-    serviceBinding: slack-connector
+    serviceBinding: mp-kyma-slack-connector
   name: gc-slack-client
   namespace: gh-connector
 spec:
   serviceBindingRef:
-    name: slack-connector
+    name: mp-kyma-slack-connector
   usedBy:
     kind: serverless-function
     name: gc-slack-client

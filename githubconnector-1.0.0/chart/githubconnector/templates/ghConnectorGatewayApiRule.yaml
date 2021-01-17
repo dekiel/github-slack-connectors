@@ -10,7 +10,7 @@ spec:
     service:
       name: gc-webhook-gateway
       port: 8081
-      host: gh-webhook-endpoint.ghcon116.neighbors.shoot.canary.k8s-hana.ondemand.com
+      host: gh-webhook-endpoint.c-0398cd7.kyma-stage.shoot.live.k8s-hana.ondemand.com
     rules:
       - path: /webhook
         methods: ["POST"]

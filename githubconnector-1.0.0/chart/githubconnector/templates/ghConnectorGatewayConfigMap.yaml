@@ -7,5 +7,5 @@ metadata:
     app: github-connector
     type: webhook-gateway
 data:
-  kymaEventsService: "http://github-connector-event-service.kyma-integration:8081/github-connector/events"
-  listenPort: "8081"
+  kymaEventsService: "http://mp-sap-github-connector-event-service.kyma-integration:8081/github-connector/v1/events"
+  ghGatewayPodPort: "8081"

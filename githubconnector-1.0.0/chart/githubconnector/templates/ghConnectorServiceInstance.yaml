@@ -1,7 +1,7 @@
 apiVersion: servicecatalog.k8s.io/v1beta1
 kind: ServiceInstance
 metadata:
-  name: gc-webhook
+  name: mp-sap-github-connector
   namespace: gh-connector
 spec:
-  serviceClassExternalName: example-name-44851
+  serviceClassExternalName: mp-sap-github-connector

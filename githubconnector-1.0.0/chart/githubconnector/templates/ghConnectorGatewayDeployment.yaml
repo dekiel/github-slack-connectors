@@ -30,11 +30,11 @@ spec:
         env:
         - name: GITHUB_CONNECTOR_NAME
           value: sap-github-webhook
-        - name: LISTEN_PORT
+        - name: EVENTING_PORT
           valueFrom:
             configMapKeyRef:
               name: gc-webhook-gateway-config
-              key: unusedPort
+              key: ghGatewayPodPort
         - name: GITHUB_SECRET
           valueFrom:
             secretKeyRef:

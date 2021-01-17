@@ -10,7 +10,7 @@ spec:
   type: git
   source: gc-slack-client-repo
   reference: master
-  baseDir: /slackClientFunction
+  baseDir: /slackClientFunction-debug
   env:
     - name: REQ_MB_LIMIT
       value: "10"

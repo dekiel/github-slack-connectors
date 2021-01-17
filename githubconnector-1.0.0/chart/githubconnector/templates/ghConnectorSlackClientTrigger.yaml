@@ -12,11 +12,11 @@ spec:
   filter:
     attributes:
       eventtypeversion: v1
-      source: github-connector
+      source: mp-sap-github-connector
       type: issuesevent.labeled
   subscriber:
     ref:
       apiVersion: v1
       kind: Service
-      name: gh-connector-slack-client
+      name: gc-slack-client
       namespace: gh-connector
