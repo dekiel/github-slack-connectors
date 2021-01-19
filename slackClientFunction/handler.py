@@ -5,7 +5,7 @@ from slack_sdk.errors import SlackApiError
 
 def main(event, context):
 	print(os.environ['KYMA_SLACK_KYMA_SLACK_CONNECTOR_277A5551_00A9_49DB_9B9A_FBFD891BD070_GATEWAY_URL'])
-	client = WebClient(base_url="http://gh-connector-gateway:8080")
+	client = WebClient(base_url="{}/".format(os.environ['KYMA_SLACK_KYMA_SLACK_CONNECTOR_277A5551_00A9_49DB_9B9A_FBFD891BD070_GATEWAY_URL']))
 	label = event["data"]["label"]["name"]
 	print(label)
 	title = event["data"]["issue"]["title"]
@@ -66,6 +66,4 @@ def main(event, context):
 			# You will get a SlackApiError if "ok" is False
 			#assert e.response["ok"] is False
 			#assert e.response["error"]  # str like 'invalid_auth', 'channel_not_found'
-			print(e.response)
-			print(e)
-			#print(f"Got an error: {e.response['error']}")
+			print(f"Got an error: {e.response['error']}")
