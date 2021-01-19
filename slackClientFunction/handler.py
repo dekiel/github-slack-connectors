@@ -66,4 +66,6 @@ def main(event, context):
 			# You will get a SlackApiError if "ok" is False
 			#assert e.response["ok"] is False
 			#assert e.response["error"]  # str like 'invalid_auth', 'channel_not_found'
-			print(f"Got an error: {e.response['error']}")
+			print(e.response)
+			print(e)
+			#print(f"Got an error: {e.response['error']}")
