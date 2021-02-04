@@ -10,10 +10,11 @@ def main(event, context):
 	title = event["data"]["issue"]["title"]
 	number = event["data"]["issue"]["number"]
 	repo = event["data"]["repository"]["name"]
+	org = event["data"]["repository"]["owner"]["login"]
 	try:
-		assignee = "Issue {} in repository {} is assigned to `{}`.".format(number, repo, event["data"]["issue"]["assignee"]["login"])
+		assignee = "Issue {} in repository {}/{} is assigned to `{}`.".format(number, org, repo, event["data"]["issue"]["assignee"]["login"])
 	except TypeError:
-		assignee = "Issue {} in repository {} is not assigned.".format(number, repo)
+		assignee = "Issue {} in repository {}/{} is not assigned.".format(number, org, repo)
 	sender = event["data"]["sender"]["login"]
 	issue_url = event["data"]["issue"]["html_url"]
 	# Run only for internal-incident and customer-incident labels
